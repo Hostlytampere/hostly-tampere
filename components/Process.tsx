@@ -60,6 +60,29 @@ export function Process() {
                 </li>
               ))}
             </ol>
+
+            <div data-reveal className="mt-12 pl-16">
+              <a
+                href={t.process.moreHref}
+                className="group inline-flex items-center gap-2.5 text-[0.9375rem] font-medium text-petrol transition-colors duration-[400ms] hover:text-terracotta-deep"
+              >
+                <span className="link-underline">{t.process.moreLink}</span>
+                <svg
+                  className="btn-arrow size-4 shrink-0"
+                  viewBox="0 0 16 16"
+                  fill="none"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M2.5 8h11m0 0-4-4m4 4-4 4"
+                    stroke="currentColor"
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              </a>
+            </div>
           </div>
         </div>
       </div>

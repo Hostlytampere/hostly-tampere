@@ -13,7 +13,7 @@ export function Nav() {
         <div className="nav-shell relative rounded-[22px] border border-transparent px-4 py-3 md:rounded-full md:px-5">
           <div className="flex items-center justify-between gap-4">
             <a
-              href="#top"
+              href="/"
               className="shrink-0 rounded-lg"
               aria-label={`${t.site.name} — etusivu`}
             >
@@ -38,7 +38,7 @@ export function Nav() {
 
             <div className="hidden md:block">
               <a
-                href="#yhteys"
+                href="/#yhteys"
                 className="group btn-sheen relative inline-flex items-center gap-2 overflow-hidden rounded-full bg-petrol-dark px-5 py-2.5 text-[0.875rem] font-medium text-cream transition-colors duration-[400ms] hover:bg-petrol"
               >
                 <span className="relative z-10">{t.nav.cta}</span>
@@ -95,7 +95,7 @@ export function Nav() {
                 ))}
               </ul>
               <a
-                href="#yhteys"
+                href="/#yhteys"
                 className="menu-item mt-4 flex w-full items-center justify-center rounded-full bg-petrol-dark px-5 py-3.5 text-[0.9375rem] font-medium text-cream"
                 style={{ "--i": t.nav.links.length } as React.CSSProperties}
               >

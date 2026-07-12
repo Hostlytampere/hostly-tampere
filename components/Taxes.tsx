@@ -32,6 +32,13 @@ export function Taxes() {
           <p
             data-reveal
             style={{ "--i": 3 } as CSSProperties}
+            className="max-w-xl rounded-[var(--radius-card)] border border-line bg-cream-dark px-6 py-5 text-[0.9375rem] leading-relaxed text-ink/85"
+          >
+            {t.taxes.deduction}
+          </p>
+          <p
+            data-reveal
+            style={{ "--i": 4 } as CSSProperties}
             className="mt-2 max-w-lg border-t border-line pt-6 text-[0.8125rem] leading-relaxed text-grey/80"
           >
             {t.taxes.disclaimer}

@@ -84,7 +84,7 @@ export function Hero() {
                   <ButtonPrimary href="#yhteys" className="!bg-cream !text-petrol-dark hover:!bg-white">
                     {t.hero.ctaPrimary}
                   </ButtonPrimary>
-                  <ButtonOnDark href="#nain-toimii">{t.hero.ctaSecondary}</ButtonOnDark>
+                  <ButtonOnDark href="/nain-se-toimii/">{t.hero.ctaSecondary}</ButtonOnDark>
                 </div>
               </div>
 

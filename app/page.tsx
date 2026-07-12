@@ -4,6 +4,7 @@ import { FactStrip } from "@/components/FactStrip";
 import { Problems } from "@/components/Problems";
 import { Process } from "@/components/Process";
 import { Services } from "@/components/Services";
+import { MoneyFlow } from "@/components/MoneyFlow";
 import { Security } from "@/components/Security";
 import { Taxes } from "@/components/Taxes";
 import { Contact } from "@/components/Contact";
@@ -27,6 +28,7 @@ export default function Page() {
         <Problems />
         <Process />
         <Services />
+        <MoneyFlow />
         <Security />
         <Taxes />
         <Contact />
