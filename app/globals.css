@@ -448,6 +448,21 @@ body[data-scrolled="true"] .nav-shell {
   }
 }
 
+/* --- 15. FAQ: vastauksen pehmeä avautuminen --- */
+@keyframes faq-open {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+details[open] .faq-answer {
+  animation: faq-open 0.5s var(--ease-out-soft);
+}
+
 /* --- 16. Filmirae: estää tummien gradienttien banding-raidat --- */
 .noise {
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='0.42'/%3E%3C/svg%3E");

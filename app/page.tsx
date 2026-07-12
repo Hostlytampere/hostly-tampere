@@ -7,6 +7,7 @@ import { Services } from "@/components/Services";
 import { MoneyFlow } from "@/components/MoneyFlow";
 import { Security } from "@/components/Security";
 import { Taxes } from "@/components/Taxes";
+import { Faq } from "@/components/Faq";
 import { Contact } from "@/components/Contact";
 import { Footer } from "@/components/Footer";
 
@@ -31,6 +32,7 @@ export default function Page() {
         <MoneyFlow />
         <Security />
         <Taxes />
+        <Faq />
         <Contact />
       </main>
       <Footer />

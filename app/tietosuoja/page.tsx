@@ -10,5 +10,5 @@ export const metadata: Metadata = {
 };
 
 export default function TietosuojaPage() {
-  return <LegalDoc doc={t.legal.privacy} showRegistrar />;
+  return <LegalDoc doc={t.legal.privacy} showRegistrar path="/tietosuoja/" />;
 }

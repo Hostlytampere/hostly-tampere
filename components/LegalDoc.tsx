@@ -4,6 +4,7 @@ import { Nav } from "./Nav";
 import { Footer } from "./Footer";
 import { Arch } from "./Arch";
 import { Eyebrow } from "./ui";
+import { JsonLd } from "./JsonLd";
 
 type Block = { readonly p: string } | { readonly ul: readonly string[] };
 type Section = { readonly heading: string; readonly blocks: readonly Block[] };
@@ -19,10 +20,28 @@ type Doc = {
  * kuin muualla: tumma header-kortti, reveal-porrastus, kaari taustalla.
  * Ei client-komponenttia. Copy tulee content/fi.ts:stä.
  */
-export function LegalDoc({ doc, showRegistrar = false }: { doc: Doc; showRegistrar?: boolean }) {
+export function LegalDoc({
+  doc,
+  showRegistrar = false,
+  path,
+}: {
+  doc: Doc;
+  showRegistrar?: boolean;
+  /** Alasivun polku murupolkua varten, esim. "/tietosuoja/" */
+  path: string;
+}) {
   const L = t.legal;
+  const breadcrumb = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Etusivu", item: `${t.site.url}/` },
+      { "@type": "ListItem", position: 2, name: doc.title, item: `${t.site.url}${path}` },
+    ],
+  };
   return (
     <>
+      <JsonLd data={breadcrumb} />
       <Nav />
       <main>
         {/* Header-kortti */}

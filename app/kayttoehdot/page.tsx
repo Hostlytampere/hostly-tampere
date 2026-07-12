@@ -10,5 +10,5 @@ export const metadata: Metadata = {
 };
 
 export default function KayttoehdotPage() {
-  return <LegalDoc doc={t.legal.terms} />;
+  return <LegalDoc doc={t.legal.terms} path="/kayttoehdot/" />;
 }

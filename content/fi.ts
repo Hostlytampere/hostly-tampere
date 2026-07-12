@@ -17,9 +17,12 @@ export const fi = {
    * ------------------------------------------------------------- */
   site: {
     name: "Hostly Tampere",
-    title: "Hostly Tampere — Airbnb-asuntosi ammattilaishoito",
+    // Title-tagi: kohdehakusana edessä, alle 60 merkkiä. Käytetään etusivun
+    // oletustitlenä ja OG/Twitter-otsikkona.
+    title: "Airbnb-hallinnointi Tampereella | Hostly Tampere",
+    // Meta description: ~150 merkkiä, kohdehakusana + CTA.
     description:
-      "Hoidamme tamperelaisten asuntosijoittajien Airbnb-kohteet avaimet käteen: vieraiden viestintä 24/7, siivous, dokumentointi ennen ja jälkeen jokaisen varauksen. Pyydä ilmainen tuottoarvio.",
+      "Hostly Tampere hoitaa Airbnb-asuntosi Tampereella avaimet käteen: vieraiden viestintä 24/7, siivous, dokumentointi ja hinnoittelu. Pyydä ilmainen tuottoarvio.",
     url: "https://hostlytampere.fi", // TODO(asiakas): oikea domain
     locale: "fi_FI",
     email: "info@hostlytampere.fi", // TODO(asiakas): oikea sähköposti
@@ -28,7 +31,12 @@ export const fi = {
     city: "Tampere",
     region: "Pirkanmaa",
     country: "FI",
-    businessId: null as string | null, // TODO(asiakas): 
+    // Rakenteista dataa (JSON-LD) varten — paikallishaun relevanssi.
+    priceRange: "€€",
+    serviceType: "Airbnb-hallinnointi ja lyhytvuokrauksen isännöinti",
+    areaServed: ["Tampere", "Nokia", "Ylöjärvi", "Kangasala", "Lempäälä", "Pirkkala", "Pirkanmaa"],
+    sameAs: [] as string[], // TODO(asiakas): some-profiilit (Instagram, Facebook) kun on
+    businessId: null as string | null, // TODO(asiakas):
     privacyUrl: null as string | null, // TODO(asiakas): tietosuojaseloste
   },
 
@@ -54,7 +62,7 @@ export const fi = {
     // Ei euromääriä. Lupaa vaivattomuutta ja tuottoa yleisellä tasolla.
     headlineLines: ["Asuntosi tuottaa.", "Sinä et tee mitään."],
     lead:
-      "Hoidamme Airbnb-kohteesi avaimet käteen -periaatteella: vieraiden viestintä ympäri vuorokauden, siivous, hinnoittelu ja dokumentointi ennen ja jälkeen jokaisen varauksen. Sinä saat kuukausiraportin ja mielenrauhan.",
+      "Hoidamme Airbnb-kohteesi Tampereella avaimet käteen -periaatteella: vieraiden viestintä ympäri vuorokauden, siivous, hinnoittelu ja dokumentointi ennen ja jälkeen jokaisen varauksen. Sinä saat kuukausiraportin ja mielenrauhan.",
     ctaPrimary: "Pyydä ilmainen tuottoarvio",
     ctaSecondary: "Näin se toimii",
     imageAlt:
@@ -297,11 +305,13 @@ export const fi = {
    * Laajennettu prosessi kädestä pitäen. Sama premium-ilme kuin etusivu.
    * ------------------------------------------------------------- */
   processPage: {
-    metaTitle: "Näin se toimii",
+    metaTitle: "Näin Airbnb-hallinnointi toimii",
     metaDescription:
-      "Askel askeleelta: näin Hostly Tampere vie asuntosi Airbnb-tuottoon — tuottoarviosta jatkuvaan hoitoon. Läpinäkyvä prosessi, rahaliikenne ja hinnoittelu.",
+      "Näin Airbnb-hallinnointi toimii Tampereella: tuottoarviosta jatkuvaan hoitoon. Katso vaiheet, rahaliikenne ja hinnoittelu. Pyydä ilmainen tuottoarvio.",
     hero: {
       eyebrow: "Näin se toimii",
+      // Saavutettava hakusana h1:lle (ei näy visuaalisesti, kantaa SEO-painon).
+      srKeyword: "Näin Airbnb-hallinnointi toimii Tampereella.",
       headlineLines: ["Kädestä pitäen", "ensimmäisestä vieraasta eteenpäin."],
       lead:
         "Ei mustaa laatikkoa. Tässä koko prosessi vaihe vaiheelta: mitä tapahtuu, mitä me teemme, mitä sinulta odotetaan ja millä aikataululla. Lopussa vielä miten rahat liikkuvat ja miten hinnoittelu rakentuu.",
@@ -344,7 +354,7 @@ export const fi = {
         title: "Julkaisu ja vieraiden hankinta",
         timing: "Julkaisu heti setupin jälkeen",
         body:
-          "Listaus julkaistaan Airbnb:ssä ja tarvittaessa muilla alustoilla. Dynaaminen hinnoittelu otetaan käyttöön — huomioimme Tampereen tapahtumat ja sesongit. Aloitamme vieraiden hankinnan ja seulonnan.",
+          "Listaus julkaistaan Airbnb:ssä ja tarvittaessa muilla alustoilla. Dynaaminen hinnoittelu otetaan käyttöön — huomioimme Tampereen tapahtumat, kuten Nokia Arenan keikat ja messut, sekä sesongit. Aloitamme vieraiden hankinnan ja seulonnan.",
         weDo: [
           "Julkaisu Airbnb:ssä ja mahdollisilla muilla alustoilla",
           "Dynaaminen hinnoittelu tapahtumien ja sesonkien mukaan",
@@ -387,6 +397,45 @@ export const fi = {
         "Pyydä ilmainen tuottoarvio. Käymme kohteesi läpi ja kerromme suoraan, kannattaako lyhytvuokraus juuri sinun asunnossasi — ilman myyntipuhetta.",
       button: "Pyydä ilmainen tuottoarvio",
     },
+  },
+
+  /* ---------------------------------------------------------------
+   * Usein kysytyt kysymykset. Sekä konversio- että SEO-tarkoitus:
+   * vastaukset kohdistuvat pitkähäntähakuihin ja mahdollistavat
+   * FAQPage-rich-snippetin (JSON-LD renderöidään FAQ-komponentissa).
+   * Vastaukset eivät sisällä uusia lupauksia — samat väitteet kuin muualla.
+   * ------------------------------------------------------------- */
+  faq: {
+    eyebrow: "Usein kysyttyä",
+    heading: "Kysymyksiä Airbnb-hallinnoinnista Tampereella",
+    lead:
+      "Jos jokin jää mietityttämään, kysy rohkeasti — vastaamme mielellämme myös henkilökohtaisesti.",
+    items: [
+      {
+        q: "Mitä Airbnb-hallinnointi maksaa Tampereella?",
+        a: "Veloitamme kertaluontoisen aloitusmaksun asunnon käyttöönotosta ja sen jälkeen osuuden toteutuneista varauksista. Ei kiinteitä kuukausimaksuja — ansaitsemme vain kun sinä ansaitset. Tarkka hinta riippuu kohteesta ja sovitaan ilmaisessa tuottoarviossa.",
+      },
+      {
+        q: "Onko Airbnb-vuokraus laillista taloyhtiössä?",
+        a: "Se riippuu taloyhtiön järjestyssäännöistä ja yhtiöjärjestyksestä. Tarkistamme nämä puolestasi ennen kuin ilmoitus menee auki, jotta vältyt ikäviltä yllätyksiltä.",
+      },
+      {
+        q: "Miten rahat liikkuvat?",
+        a: "Kaikki maksut kulkevat Airbnb:n kautta. Airbnb tilittää sinulle osuutesi ja meille palvelupalkkiomme automaattisesti — emme koskaan käsittele rahojasi itse, etkä saa meiltä erillisiä laskuja.",
+      },
+      {
+        q: "Millä alueella toimitte?",
+        a: "Toimimme Tampereella ja lähikunnissa. Olemme fyysisesti paikan päällä, joten pääsemme kohteeseen nopeasti — toisin kuin etänä toimivat hallinnointiyritykset.",
+      },
+      {
+        q: "Mitä palveluun kuuluu?",
+        a: "Avaimet käteen: vieraiden viestintä 24/7, check-in ja check-out, siivous ja liinavaatteet, dynaaminen hinnoittelu sekä kuva- ja videodokumentointi ennen ja jälkeen jokaisen varauksen. Saat kuukausiraportin tuotosta ja käyttöasteesta.",
+      },
+      {
+        q: "Kuinka nopeasti pääsen alkuun?",
+        a: "Annamme tuottoarvion tyypillisesti muutamassa päivässä yhteydenotosta. Sopimuksen jälkeen asunnon käyttöönotto — valokuvaus, listaus ja hinnoittelu — kestää yleensä 1–2 viikkoa.",
+      },
+    ],
   },
 
   /* --------------------------------------------------------------- */

@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(t.site.url),
   title: {
     default: t.site.title,
-    template: `%s — ${t.site.name}`,
+    template: `%s | ${t.site.name}`,
   },
   description: t.site.description,
   applicationName: t.site.name,
@@ -49,20 +49,28 @@ export const viewport: Viewport = {
 };
 
 /**
- * LocalBusiness-strukturoitu data. Kertoo Googlelle että olemme
- * fyysinen tamperelainen toimija — juuri se väite jolla erotumme
- * etänä toimivista kilpailijoista.
+ * LocalBusiness / ProfessionalService -strukturoitu data. Kertoo Googlelle
+ * että olemme fyysinen tamperelainen toimija — juuri se väite jolla
+ * erotumme etänä toimivista kilpailijoista. Tukee paikallishaun
+ * rich resultseja.
  * TODO(asiakas): lisää postiosoite ja Y-tunnus kun ne ovat olemassa.
  */
+const areaServed = t.site.areaServed.map((name) => ({ "@type": "City", name }));
+
 const jsonLd = {
   "@context": "https://schema.org",
-  "@type": "LocalBusiness",
+  "@type": ["LocalBusiness", "ProfessionalService"],
+  "@id": `${t.site.url}/#business`,
   name: t.site.name,
   description: t.site.description,
   url: t.site.url,
   email: t.site.email,
   telephone: t.site.phoneHref,
-  areaServed: { "@type": "City", name: t.site.city },
+  image: `${t.site.url}/opengraph-image`,
+  logo: `${t.site.url}/icon.svg`,
+  priceRange: t.site.priceRange,
+  serviceType: t.site.serviceType,
+  areaServed,
   address: {
     "@type": "PostalAddress",
     addressLocality: t.site.city,
@@ -70,6 +78,17 @@ const jsonLd = {
     addressCountry: t.site.country,
   },
   knowsLanguage: ["fi", "en"],
+  ...(t.site.sameAs.length ? { sameAs: t.site.sameAs } : {}),
+  makesOffer: {
+    "@type": "Offer",
+    itemOffered: {
+      "@type": "Service",
+      name: "Airbnb-hallinnointi ja co-hosting Tampereella",
+      serviceType: t.site.serviceType,
+      areaServed,
+      provider: { "@id": `${t.site.url}/#business` },
+    },
+  },
 };
 
 /** Lomakkeen tekstit inline-skriptille (copy pysyy content-tiedostossa). */

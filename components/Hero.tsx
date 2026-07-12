@@ -64,6 +64,10 @@ export function Hero() {
                 </div>
 
                 <h1 className="mt-6 text-[clamp(2.4rem,1.1rem+5.1vw,4.5rem)] leading-[1.03] tracking-[-0.03em] text-cream">
+                  {/* Saavutettava hakusana: h1 kantaa pääkohdehakusanan ilman
+                      että visuaalinen otsikko muuttuu. Sama teksti näkyy myös
+                      yllä eyebrow'ssa, joten tämä ei ole piilotettua täytettä. */}
+                  <span className="sr-only">{t.hero.eyebrow}. </span>
                   {t.hero.headlineLines.map((line, i) => (
                     <span
                       key={line}

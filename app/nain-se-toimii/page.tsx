@@ -5,9 +5,24 @@ import { Nav } from "@/components/Nav";
 import { Footer } from "@/components/Footer";
 import { MoneyFlow } from "@/components/MoneyFlow";
 import { Arch } from "@/components/Arch";
+import { JsonLd } from "@/components/JsonLd";
 import { ButtonPrimary, ButtonOnDark, Eyebrow, SectionHeading } from "@/components/ui";
 
 const p = t.processPage;
+
+const breadcrumbLd = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Etusivu", item: `${t.site.url}/` },
+    {
+      "@type": "ListItem",
+      position: 2,
+      name: p.metaTitle,
+      item: `${t.site.url}/nain-se-toimii/`,
+    },
+  ],
+};
 
 export const metadata: Metadata = {
   title: p.metaTitle,
@@ -36,6 +51,7 @@ const Check = () => (
 export default function ProcessPage() {
   return (
     <>
+      <JsonLd data={breadcrumbLd} />
       <Nav />
       <main>
         {/* ---------- Header-hero (tumma kortti, kuten etusivu) ---------- */}
@@ -68,6 +84,7 @@ export default function ProcessPage() {
                   </div>
 
                   <h1 className="mt-6 text-[clamp(2.2rem,1.1rem+4.4vw,3.875rem)] leading-[1.05] tracking-[-0.03em] text-cream">
+                    <span className="sr-only">{p.hero.srKeyword} </span>
                     {p.hero.headlineLines.map((line, i) => (
                       <span
                         key={line}
