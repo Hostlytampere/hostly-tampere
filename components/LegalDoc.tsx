@@ -87,13 +87,6 @@ export function LegalDoc({ doc, showRegistrar = false }: { doc: Doc; showRegistr
                       </dt>
                       <dd className="text-grey">{t.footer.location}</dd>
                     </div>
-                    <div className="flex flex-wrap gap-x-2 pt-1">
-                      <dt className="text-grey/70">{L.businessIdLabel}:</dt>
-                      <dd className="text-ink/85">
-                        {/* TODO(asiakas): täytä site.businessId kun Y-tunnus on olemassa */}
-                        {t.site.businessId ?? L.businessIdTodo}
-                      </dd>
-                    </div>
                     <div className="flex flex-col gap-1 pt-1">
                       <a
                         href={`mailto:${t.site.email}`}

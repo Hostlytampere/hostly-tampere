@@ -476,8 +476,6 @@ export const fi = {
     registrarHeading: "Rekisterinpitäjä",
     registrarNote:
       "Tietosuoja-asioissa voit olla meihin yhteydessä alla olevilla yhteystiedoilla. Vastaamme pyyntöihin ilman aiheetonta viivytystä.",
-    businessIdLabel: "Y-tunnus",
-    businessIdTodo: "Lisätään kun yritys on rekisteröity",
 
     privacy: {
       eyebrow: "Tietosuoja",
