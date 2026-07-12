@@ -73,16 +73,22 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="mt-16 flex flex-col gap-3 border-t border-line-dark/60 pt-7 text-[0.8125rem] text-cream/40 sm:flex-row sm:items-center sm:justify-between">
+        <div className="mt-16 flex flex-col gap-4 border-t border-line-dark/60 pt-7 text-[0.8125rem] text-cream/40 md:flex-row md:items-center md:justify-between">
           <p>
             © {year} {t.footer.copyright}
           </p>
-          {/*
-            TODO(asiakas): kun nämä ovat olemassa, lisää tähän:
-              · Y-tunnus: 1234567-8
-              · <a href={t.site.privacyUrl}>Tietosuojaseloste</a>
-          */}
-          <p className="text-cream/30">{t.site.city}</p>
+          <nav aria-label="Lakisivut" className="flex flex-wrap items-center gap-x-6 gap-y-2">
+            {t.footer.legal.map((link) => (
+              <a
+                key={link.href}
+                href={link.href}
+                className="link-underline text-cream/50 transition-colors duration-[400ms] hover:text-cream"
+              >
+                {link.label}
+              </a>
+            ))}
+            {/* TODO(asiakas): lisää Y-tunnus tähän kun se on olemassa. */}
+          </nav>
         </div>
       </div>
     </footer>

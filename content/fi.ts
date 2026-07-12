@@ -28,7 +28,7 @@ export const fi = {
     city: "Tampere",
     region: "Pirkanmaa",
     country: "FI",
-    businessId: null as string | null, // TODO(asiakas): Y-tunnus kun rekisteröity
+    businessId: null as string | null, // TODO(asiakas): 
     privacyUrl: null as string | null, // TODO(asiakas): tietosuojaseloste
   },
 
@@ -453,6 +453,225 @@ export const fi = {
     },
     location: "Tampere, Suomi",
     copyright: "Hostly Tampere. Kaikki oikeudet pidätetään.",
-    // TODO(asiakas): Y-tunnus ja tietosuojaseloste-linkki kun ovat olemassa.
+    // Alatunnisteen lakilinkit. Sivut: app/tietosuoja + app/kayttoehdot.
+    legal: [
+      { label: "Tietosuojaseloste", href: "/tietosuoja/" },
+      { label: "Käyttöehdot", href: "/kayttoehdot/" },
+    ],
+  },
+
+  /* ---------------------------------------------------------------
+   * LAKISIVUT — tietosuojaseloste ja käyttöehdot.
+   * Renderöidään components/LegalDoc.tsx:llä reiteille
+   * /tietosuoja/ ja /kayttoehdot/. Linkit vain footerissa.
+   *
+   * TODO(asiakas): täytä ennen kuin sivusto on tuotannossa oikeilla
+   * asiakkailla — virallinen toiminimi/yhtiömuoto ja Y-tunnus (site.businessId).
+   * Nämä tekstit ovat huolellinen GDPR-pohja, eivät korvaa juristin tarkistusta.
+   * ------------------------------------------------------------- */
+  legal: {
+    updatedLabel: "Päivitetty",
+    updated: "12.7.2026",
+    backToHome: "Takaisin etusivulle",
+    registrarHeading: "Rekisterinpitäjä",
+    registrarNote:
+      "Tietosuoja-asioissa voit olla meihin yhteydessä alla olevilla yhteystiedoilla. Vastaamme pyyntöihin ilman aiheetonta viivytystä.",
+    businessIdLabel: "Y-tunnus",
+    businessIdTodo: "Lisätään kun yritys on rekisteröity",
+
+    privacy: {
+      eyebrow: "Tietosuoja",
+      title: "Tietosuojaseloste",
+      intro:
+        "Tämä seloste kertoo, mitä henkilötietoja keräämme, mihin käytämme niitä ja mitkä ovat sinun oikeutesi. Käsittelemme henkilötietoja EU:n yleisen tietosuoja-asetuksen (GDPR) ja Suomen tietosuojalain mukaisesti.",
+      sections: [
+        {
+          heading: "Mitä henkilötietoja käsittelemme",
+          blocks: [
+            {
+              p: "Käsittelemme vain niitä tietoja, jotka annat meille itse — yhteydenottolomakkeella tai ottaessasi meihin yhteyttä sähköpostitse tai puhelimitse. Näitä ovat:",
+            },
+            {
+              ul: [
+                "Nimi",
+                "Sähköpostiosoite",
+                "Puhelinnumero (jos annat sen)",
+                "Asunnon sijainti ja tyyppi",
+                "Vapaamuotoisen viestisi sisältö",
+              ],
+            },
+            {
+              p: "Emme pyydä emmekä kerää arkaluonteisia henkilötietoja. Emme käytä profilointia emmekä automaattista päätöksentekoa.",
+            },
+          ],
+        },
+        {
+          heading: "Mihin käytämme tietoja ja millä perusteella",
+          blocks: [
+            {
+              p: "Käytämme tietojasi vain siihen tarkoitukseen, jota varten annoit ne: yhteydenottopyyntöösi vastaamiseen, tuottoarvion tekemiseen ja mahdollisen yhteistyön valmisteluun.",
+            },
+            {
+              p: "Käsittelyn oikeusperusteena on suostumuksesi (lomakkeen lähettäminen tai yhteydenotto) sekä pyynnöstäsi toteutettavat sopimusta edeltävät toimet. Emme käytä tietojasi suoramarkkinointiin ilman erillistä suostumustasi emmekä myy tai vuokraa niitä eteenpäin.",
+            },
+          ],
+        },
+        {
+          heading: "Kuinka kauan säilytämme tietoja",
+          blocks: [
+            {
+              p: "Säilytämme yhteydenottotietoja vain niin kauan kuin on tarpeen asiasi hoitamiseksi. Jos yhteistyötä ei synny, poistamme yhteydenottopyynnön tiedot viimeistään 12 kuukauden kuluessa.",
+            },
+            {
+              p: "Jos yhteistyö alkaa, tietoja säilytetään asiakassuhteen ajan ja sen jälkeen niin kauan kuin lainsäädäntö (esimerkiksi kirjanpitolaki) edellyttää.",
+            },
+          ],
+        },
+        {
+          heading: "Palvelut ja tietojen käsittelijät",
+          blocks: [
+            {
+              p: "Sivustomme on toteutettu ilman seurantaa ja ilman omaa palvelinpuolen tietokantaa. Käytämme kuitenkin muutamaa luotettavaa palveluntarjoajaa, jotka käsittelevät tietoja puolestamme:",
+            },
+            {
+              ul: [
+                "Lomakepalvelu (Web3Forms): välittää lomakkeella lähettämäsi tiedot sähköpostiimme.",
+                "Verkkosivuston ylläpito (Vercel): sivuston teknisestä toimituksesta vastaava palvelu käsittelee tavanomaisia lokitietoja, kuten IP-osoitteen, tietoturvan ja toimivuuden varmistamiseksi.",
+                "Sähköposti: yhteydenottosi päätyy sähköpostilaatikkoomme, jonka tarjoaa sähköpostipalveluntarjoajamme.",
+              ],
+            },
+            {
+              p: "Jokainen käsittelijä käsittelee tietoja vain ohjeidemme mukaisesti ja soveltuvan tietosuojasopimuksen puitteissa.",
+            },
+          ],
+        },
+        {
+          heading: "Tietojen siirto EU:n tai ETA:n ulkopuolelle",
+          blocks: [
+            {
+              p: "Osa käyttämistämme palveluista voi käsitellä tietoja EU:n tai ETA-alueen ulkopuolella. Näissä tapauksissa siirto perustuu Euroopan komission hyväksymiin asianmukaisiin suojatoimiin, kuten vakiosopimuslausekkeisiin (SCC).",
+            },
+          ],
+        },
+        {
+          heading: "Evästeet",
+          blocks: [
+            {
+              p: "Sivustomme ei käytä seuranta- tai mainosevästeitä eikä analytiikkatyökaluja. Emme aseta selaimeesi suostumusta vaativia evästeitä. Fontit ja muut resurssit ladataan omalta palvelimeltamme, joten kolmannet osapuolet eivät seuraa sinua sivustollamme.",
+            },
+          ],
+        },
+        {
+          heading: "Tietojen suojaaminen",
+          blocks: [
+            {
+              p: "Yhteys sivustolle on suojattu salauksella (HTTPS). Pääsy yhteydenottotietoihin on rajattu vain niille, jotka niitä työssään tarvitsevat, ja käsittelemme tietoja luottamuksellisesti.",
+            },
+          ],
+        },
+        {
+          heading: "Sinun oikeutesi",
+          blocks: [
+            {
+              p: "Sinulla on tietosuoja-asetuksen mukaiset oikeudet omiin tietoihisi. Voit milloin tahansa:",
+            },
+            {
+              ul: [
+                "saada tietää, mitä tietoja sinusta käsittelemme (tarkastusoikeus)",
+                "pyytää virheellisten tietojen oikaisua",
+                "pyytää tietojesi poistamista (”oikeus tulla unohdetuksi”)",
+                "pyytää käsittelyn rajoittamista tai vastustaa käsittelyä",
+                "peruuttaa antamasi suostumuksen",
+                "saada antamasi tiedot siirrettävässä muodossa",
+              ],
+            },
+            {
+              p: "Voit käyttää oikeuksiasi ottamalla meihin yhteyttä alla olevilla yhteystiedoilla.",
+            },
+          ],
+        },
+        {
+          heading: "Valitusoikeus",
+          blocks: [
+            {
+              p: "Jos katsot, että käsittelemme tietojasi tietosuojalainsäädännön vastaisesti, sinulla on oikeus tehdä valitus valvontaviranomaiselle. Suomessa tämä on tietosuojavaltuutetun toimisto (tietosuoja.fi).",
+            },
+          ],
+        },
+        {
+          heading: "Muutokset tähän selosteeseen",
+          blocks: [
+            {
+              p: "Voimme päivittää tätä selostetta palvelun tai lainsäädännön muuttuessa. Ajantasainen versio on aina saatavilla tällä sivulla, ja yläreunan päivämäärä kertoo viimeisimmän muutoksen.",
+            },
+          ],
+        },
+      ],
+    },
+
+    terms: {
+      eyebrow: "Ehdot",
+      title: "Käyttöehdot",
+      intro:
+        "Nämä ehdot koskevat tämän verkkosivuston käyttöä. Käyttämällä sivustoa hyväksyt nämä ehdot.",
+      sections: [
+        {
+          heading: "Sivuston tarkoitus",
+          blocks: [
+            {
+              p: "Tämä on Hostly Tampereen markkinointisivusto. Sen tarkoitus on esitellä palvelumme ja tarjota mahdollisuus pyytää maksuton tuottoarvio. Sivuston sisältö on yleistä tietoa, eikä se muodosta sitovaa tarjousta tai sopimusta.",
+            },
+          ],
+        },
+        {
+          heading: "Tuottoarviot eivät ole takuita",
+          blocks: [
+            {
+              p: "Antamamme tuottoarviot perustuvat markkinatietoon ja kokemukseen, mutta ne ovat arvioita — eivät takuita tulevasta tuotosta. Lyhytvuokrauksen todelliseen tuottoon vaikuttavat monet tekijät, joita emme voi täysin ennakoida tai hallita, kuten kysyntä, sesongit ja markkinatilanne.",
+            },
+          ],
+        },
+        {
+          heading: "Emme anna sitovaa neuvontaa",
+          blocks: [
+            {
+              p: "Sivuston sisältö, mukaan lukien verotusta ja taloyhtiön sääntöjä koskevat maininnat, on tarkoitettu ohjaavaksi yleistiedoksi. Se ei ole sitovaa vero-, laki- tai sijoitusneuvontaa. Suosittelemme varmistamaan oman tilanteesi ammattilaiselta.",
+            },
+          ],
+        },
+        {
+          heading: "Immateriaalioikeudet",
+          blocks: [
+            {
+              p: "Sivuston sisältö — tekstit, kuvat, logo ja ulkoasu — on Hostly Tampereen tai sen kumppaneiden omaisuutta. Sisältöä ei saa kopioida tai käyttää kaupallisesti ilman lupaa.",
+            },
+          ],
+        },
+        {
+          heading: "Kolmansien osapuolten palvelut",
+          blocks: [
+            {
+              p: "Palvelumme toimii Airbnb-alustan kautta. Emme vastaa Airbnb:n tai muiden kolmansien osapuolten palveluiden sisällöstä, ehdoista tai toiminnasta. Kuhunkin palveluun sovelletaan sen omia ehtoja.",
+            },
+          ],
+        },
+        {
+          heading: "Vastuunrajoitus",
+          blocks: [
+            {
+              p: "Pyrimme pitämään sivuston tiedot ajantasaisina ja virheettöminä, mutta emme takaa niiden täydellistä paikkansapitävyyttä tai sivuston keskeytyksetöntä saatavuutta. Emme vastaa välillisistä vahingoista, jotka aiheutuvat sivuston käytöstä.",
+            },
+          ],
+        },
+        {
+          heading: "Sovellettava laki",
+          blocks: [
+            {
+              p: "Näihin ehtoihin ja sivuston käyttöön sovelletaan Suomen lakia. Mahdolliset erimielisyydet pyritään ratkaisemaan ensisijaisesti neuvottelemalla.",
+            },
+          ],
+        },
+      ],
+    },
   },
 } as const;
